@@ -83,6 +83,9 @@
     border-radius: 0px;
     color: white;
     height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    text-align: center;
     width: 220px;
     font-size: 1.0rem;
     text-transform: uppercase;
@@ -91,4 +94,15 @@
     left: calc(50% - 110px);
     margin-top: 20px;
     cursor: pointer;
+}
+
+.form-root {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.54);
+    z-index: 1003;
+    padding: 20px 10px;
 }
