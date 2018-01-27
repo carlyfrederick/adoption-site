@@ -17,14 +17,12 @@ class Form extends Component {
           <div
           className={'form-root'}>
             <div
-            style={{
-                height: 500,
-                width: 500,
-                backgroundColor: 'white',
-                position: 'absolute',
-                left: 'calc(100% - 250px)'
-            }}>
-                test
+            className={'form'}>
+                <div
+                onTouchTap={ () => this.closeForm() }
+                className={'close-form'}>
+                X
+                </div>
             </div>
           </div>
         );

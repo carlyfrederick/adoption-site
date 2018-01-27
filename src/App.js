@@ -30,7 +30,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        formOpen: state.form.formOpen
+        formOpen: state.form.get('formOpen'),
     };
 }
 
