@@ -116,6 +116,8 @@
     box-shadow: 0 6px 25px -3px #333;
     margin-top: 10px;
     padding: 20px;
+    border-radius: 5px;
+    min-width: 325px;
 }
 
 .close-form {

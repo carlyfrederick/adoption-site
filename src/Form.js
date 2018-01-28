@@ -31,12 +31,12 @@ const inputs = [
         form_input: 'phone_number',
         type: 'input',
     },
-    {
-        name: 'Dog size preference?',
-        required: false,
-        form_input: 'size_preference',
-        type: 'list',
-    }
+    // {
+    //     name: 'Dog size preference?',
+    //     required: false,
+    //     form_input: 'size_preference',
+    //     type: 'list',
+    // }
 ];
 
 class Form extends Component {
@@ -52,8 +52,22 @@ class Form extends Component {
             })
         };
         this.closeForm = this.closeForm.bind(this);
-        //this.onFieldChange = this.onFieldChange.bind(this);
+        this.onFieldChange = this.onFieldChange.bind(this);
         this.getFormInputs = this.getFormInputs.bind(this);
+        this.getInputType = this.getInputType.bind(this);
+        this.isFormValid = this.isFormValid.bind(this);
+    }
+
+    onFieldChange(event, formInput) {
+        const { value } = event.target;
+        let entry = value;
+        if (!entry) entry = '';
+        const { form } = this.state;
+        let newForm = form;
+        newForm = newForm.set(formInput, entry);
+        this.setState({
+            form: newForm,
+        });
     }
 
     getFormInputs() {
@@ -66,39 +80,90 @@ class Form extends Component {
                     width: '100%',
                     display: 'inline-block',
                     margin: i === 0 ?
-                        '15px 0px 5px 0px' :
-                        '5px 0px',
+                        '20px 0px 5px 0px' :
+                        '10px 0px',
                 }}>
                     { input.name }
                     {
                         input.required ?
                         <span style={{color: 'red'}}> *</span> : null
                     }
+                    { this.getInputType(input, i) }
                 </div>
             )
         });
         return formEntries;
     }
 
+    getInputType(input, i) {
+        const { form } = this.state;
+        switch (input.type) {
+            case 'input':
+                return <input
+                    type='text'
+                    autoFocus={i === 0}
+                    name={input.name}
+                    onChange={e => this.onFieldChange(e, input.form_input)}
+                    placeholder={input.placeholder}
+                    value={form.get(input.form_input)}
+                    style={{
+                        display: 'block',
+                        width: '80%',
+                        padding: 10,
+                        marginTop: 5
+                    }}
+                />;
+            case 'list': return null;
+            default:
+                return null;
+        }
+    }
+
     closeForm() {
         this.props.formActions.closeForm();
     }
 
+    isFormValid() {
+        const { form } = this.state;
+        return false;
+    }
+
     render() {
         if (!this.props.formOpen) return null;
+        const canSubmit = this.isFormValid();
         return (
           <div
           className={'form-root'}>
             <div
             className={'form'}>
-                Adoption Application
+                <div style={{
+                    textTransform: 'uppercase',
+                    letterSpacing: '5px',
+                    display: 'inline-block'
+                }}>Adoption Application</div>
                 <div
                 onTouchTap={ () => this.closeForm() }
                 className={'close-form'}>
-                X
+                &#10005;
                 </div>
                 <div style={{ borderTop: '1px solid gray', marginTop: 20 }}>
                     { this.getFormInputs() }
+                </div>
+                <div
+                className={'button'}
+                style={{
+                    cursor: canSubmit ? 'pointer' : 'default',
+                    height: 44,
+                    bottom: 40,
+                    width: 130,
+                    lineHeight: '44px',
+                    left: 'calc(50% - 75px)',
+                    opacity: canSubmit ? 1.0 : 0.5
+                }}
+                onTouchTap={canSubmit ?
+                    this.closeForm : null
+                }>
+                    Submit
                 </div>
             </div>
           </div>
