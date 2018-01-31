@@ -216,3 +216,10 @@
     top: 50px;
     z-index: 2;
 }
+
+.back-wrapper {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    cursor: pointer;
+}

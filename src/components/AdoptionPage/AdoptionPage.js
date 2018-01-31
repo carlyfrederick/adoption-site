@@ -9,6 +9,7 @@ import Body from './Body';
 import Form from './Form';
 import ConfirmationDialog from './ConfirmationDialog';
 import ApplicationButton from './Button';
+import BackToHomepage from '../BackToHomepage';
 import '../App.css';
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
                 this.props.showConfirmation ?
                 <ConfirmationDialog {...this.props}/> : null
             }
+            <BackToHomepage />
         </div>
       </div>
     );
