@@ -14,10 +14,12 @@ class App extends Component {
   render() {
     return (
       <div className={'App'}>
-        <Header />
-        <Body />
-        <ApplicationButton {...this.props}/>
-        <Form {...this.props} />
+        <div className={'wrapper'}>
+            <Header />
+            <Body />
+            <ApplicationButton {...this.props}/>
+            <Form {...this.props} />
+        </div>
       </div>
     );
   }

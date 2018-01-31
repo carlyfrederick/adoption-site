@@ -14,6 +14,7 @@ class Button extends Component {
     render() {
         return (
           <div
+          id={'button-hover'}
           className={'button'}
           onTouchTap={() => this.openForm()}>
             Get started

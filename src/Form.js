@@ -31,12 +31,18 @@ const inputs = [
         form_input: 'phone_number',
         type: 'input',
     },
-    // {
-    //     name: 'Dog size preference?',
-    //     required: false,
-    //     form_input: 'size_preference',
-    //     type: 'list',
-    // }
+    {
+        name: 'Dog size preference?',
+        required: false,
+        form_input: 'size_preference',
+        options: [
+            'no_preference',
+            'small',
+            'medium',
+            'large',
+        ],
+        type: 'list',
+    }
 ];
 
 class Form extends Component {
@@ -48,7 +54,7 @@ class Form extends Component {
                 last_name: '',
                 email: '',
                 phone_number: '',
-                size_preference: '',
+                size_preference: 'no_preference',
             })
         };
         this.closeForm = this.closeForm.bind(this);
@@ -108,12 +114,49 @@ class Form extends Component {
                     value={form.get(input.form_input)}
                     style={{
                         display: 'block',
-                        width: '80%',
+                        width: 'calc(100% - 40px)',
                         padding: 10,
-                        marginTop: 5
+                        marginTop: 5,
+                        marginLeft: 5,
                     }}
                 />;
-            case 'list': return null;
+            case 'list': {
+                const list = [];
+                input.options.forEach(option => {
+                    let lbs = '';
+                    if (option === 'small') {
+                        lbs = ' (5-10lbs)';
+                    } else if (option === 'medium') {
+                        lbs = ' (10-50lbs)';
+                    } else if (option === 'large') {
+                        lbs = ' (50+lbs)';
+                    }
+                    list.push(<label
+                        style={{
+                            display: 'block',
+                            margin: '10px 0px 10px 10px',
+                        }}
+                        key={option}>
+                        <input
+                        name={option}
+                        type="radio"
+                        value={option}
+                        checked={form.get('size_preference') === option}
+                        onChange={e => this.onFieldChange(e, input.form_input)} />
+                            <div
+                            style={{
+                                marginTop: -2,
+                                marginLeft: 5,
+                                display: 'inline-block',
+                                fontSize: '12px'
+                            }}>
+                                {option.replace(/_/g, ' ')}
+                                {lbs}
+                            </div>
+                    </label>)
+                });
+                return list;
+            }
             default:
                 return null;
         }
@@ -125,7 +168,11 @@ class Form extends Component {
 
     isFormValid() {
         const { form } = this.state;
-        return false;
+        const hasName = form.get('first_name').length > 0
+            && form.get('last_name').length > 0;
+        const hasEmail = form.get('email').indexOf('@') > -1
+            && form.get('email').length > 3;
+        return hasName && hasEmail;
     }
 
     render() {
@@ -136,34 +183,44 @@ class Form extends Component {
           className={'form-root'}>
             <div
             className={'form'}>
-                <div style={{
-                    textTransform: 'uppercase',
-                    letterSpacing: '5px',
-                    display: 'inline-block'
-                }}>Adoption Application</div>
-                <div
-                onTouchTap={ () => this.closeForm() }
-                className={'close-form'}>
-                &#10005;
+                <div style={{ height: 30, width: '100%' }}>
+                    <div style={{
+                        textTransform: 'uppercase',
+                        letterSpacing: '5px',
+                        display: 'inline-block'
+                    }}>Adoption Application</div>
+                    <div
+                    onTouchTap={ () => this.closeForm() }
+                    className={'close-form'}>
+                    &#10005;
+                    </div>
                 </div>
-                <div style={{ borderTop: '1px solid gray', marginTop: 20 }}>
+                <div style={{
+                    borderTop: '1px solid gray',
+                    maxHeight: 'calc(100% - 100px)',
+                    height: 'calc(100% - 60px)',
+                    overflowY: 'auto'
+                }}>
                     { this.getFormInputs() }
                 </div>
-                <div
-                className={'button'}
-                style={{
-                    cursor: canSubmit ? 'pointer' : 'default',
-                    height: 44,
-                    bottom: 40,
-                    width: 130,
-                    lineHeight: '44px',
-                    left: 'calc(50% - 75px)',
-                    opacity: canSubmit ? 1.0 : 0.5
-                }}
-                onTouchTap={canSubmit ?
-                    this.closeForm : null
-                }>
-                    Submit
+                <div style={{ height: 70, width: '100%' }}>
+                    <div
+                    id={ canSubmit ? 'button-hover' : null }
+                    className={'button'}
+                    style={{
+                        cursor: canSubmit ? 'pointer' : 'default',
+                        height: 44,
+                        width: 130,
+                        lineHeight: '44px',
+                        left: 'calc(50% - 75px)',
+                        opacity: canSubmit ? 1.0 : 0.5,
+                        marginTop: 10
+                    }}
+                    onTouchTap={canSubmit ?
+                        this.closeForm : null
+                    }>
+                        Submit
+                    </div>
                 </div>
             </div>
           </div>
