@@ -7,6 +7,7 @@ import * as formActions from './actions/formActions';
 import Header from './Header';
 import Body from './Body';
 import Form from './Form';
+import ConfirmationForm from './ConfirmationForm';
 import ApplicationButton from './Button';
 import './App.css';
 
@@ -18,7 +19,11 @@ class App extends Component {
             <Header />
             <Body />
             <ApplicationButton {...this.props}/>
-            <Form {...this.props} />
+            <Form {...this.props}/>
+            {
+                this.props.showConfirmation ?
+                <ConfirmationForm {...this.props}/> : null
+            }
         </div>
       </div>
     );
@@ -33,6 +38,7 @@ App.propTypes = {
 function mapStateToProps(state) {
     return {
         formOpen: state.form.get('formOpen'),
+        showConfirmation: state.form.get('showConfirmation'),
     };
 }
 

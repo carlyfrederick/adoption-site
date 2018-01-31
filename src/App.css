@@ -127,11 +127,24 @@
     width: 40%;
     background-color: white;
     position: absolute;
-    left: 30%;
+    left: calc(30% - 20px);
     box-shadow: 0 6px 25px -3px #333;
     margin-top: 10px;
     padding: 20px;
     min-width: 325px;
+}
+
+.small-form {
+    height: 200px;
+    width: 250px;
+    background-color: white;
+    position: absolute;
+    left: calc(50% - 145px);
+    box-shadow: 0 6px 25px -3px #333;
+    top: calc(50% - 100px);
+    padding: 20px;
+    min-width: 200px;
+    display: table;
 }
 
 .close-form {

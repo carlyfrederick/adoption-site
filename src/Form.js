@@ -164,6 +164,19 @@ class Form extends Component {
 
     closeForm() {
         this.props.formActions.closeForm();
+        const canSubmit = this.isFormValid();
+        if (canSubmit) {
+            this.props.formActions.showConfirmation();
+        }
+        this.setState({
+            form: fromJS({
+                first_name: '',
+                last_name: '',
+                email: '',
+                phone_number: '',
+                size_preference: 'no_preference',
+            })
+        });
     }
 
     isFormValid() {
