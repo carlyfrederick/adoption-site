@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class ConfirmationForm extends Component {
+class ConfirmationDialog extends Component {
     componentDidMount() {
         setTimeout((() => {
             this.props.formActions.closeConfirmation()}),
@@ -37,4 +37,4 @@ class ConfirmationForm extends Component {
     }
 }
 
-export default ConfirmationForm;
+export default ConfirmationDialog;

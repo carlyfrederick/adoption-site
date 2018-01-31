@@ -7,7 +7,7 @@ import * as formActions from './actions/formActions';
 import Header from './Header';
 import Body from './Body';
 import Form from './Form';
-import ConfirmationForm from './ConfirmationForm';
+import ConfirmationDialog from './ConfirmationDialog';
 import ApplicationButton from './Button';
 import './App.css';
 
@@ -22,7 +22,7 @@ class App extends Component {
             <Form {...this.props}/>
             {
                 this.props.showConfirmation ?
-                <ConfirmationForm {...this.props}/> : null
+                <ConfirmationDialog {...this.props}/> : null
             }
         </div>
       </div>
