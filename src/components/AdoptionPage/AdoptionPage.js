@@ -3,13 +3,13 @@ import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import * as formActions from './actions/formActions';
+import * as formActions from '../../actions/formActions';
 import Header from './Header';
 import Body from './Body';
 import Form from './Form';
 import ConfirmationDialog from './ConfirmationDialog';
 import ApplicationButton from './Button';
-import './App.css';
+import '../App.css';
 
 class App extends Component {
   render() {

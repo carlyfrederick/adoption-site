@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fromJS } from 'immutable';
-import './App.css';
+import '../App.css';
 
 const inputs = [
     {

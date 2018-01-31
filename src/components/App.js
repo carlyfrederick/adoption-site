@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
-import LandingPage from './LandingPage';
-import AdoptionPage from './AdoptionPage';
+import LandingPage from './Home/LandingPage';
+import AdoptionPage from './AdoptionPage/AdoptionPage';
 import './App.css';
 
 class App extends Component {

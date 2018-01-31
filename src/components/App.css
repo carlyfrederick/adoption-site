@@ -41,15 +41,15 @@
 }
 
 .bailey {
-    background-image: url('./bailey.jpeg');
+    background-image: url('./assets/bailey.jpeg');
 }
 
 .dolce {
-    background-image: url('./dolce.jpeg');
+    background-image: url('./assets/dolce.jpeg');
 }
 
 .rocco {
-    background-image: url('./rocco.jpeg');
+    background-image: url('./assets/rocco.jpeg');
 }
 
 .bailey:hover, .dolce:hover, .rocco:hover {
@@ -161,7 +161,7 @@
 }
 
 .background-photo {
-    background: url(Picture.jpg) 50% 40% no-repeat; /* 50% 50% centers image in div */
+    background: url('./assets/Picture.jpg') 50% 40% no-repeat; /* 50% 50% centers image in div */
     background-size: cover;
     height: calc(100% - 50px);
     width: 100%;
