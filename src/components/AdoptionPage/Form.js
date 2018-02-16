@@ -225,7 +225,7 @@ class Form extends Component {
                         height: 44,
                         width: 130,
                         lineHeight: '44px',
-                        left: 'calc(50% - 75px)',
+                        left: 'calc(50% - 65px)',
                         opacity: canSubmit ? 1.0 : 0.5,
                         marginTop: 10
                     }}
