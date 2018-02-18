@@ -28,8 +28,11 @@
 .header {
     background-color: white;
     display: flex;
-    overflow: hidden;
-    padding: 10px 20px 20px 20px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: calc(100% - 50px);
+    margin: 10px 20px 20px 20px;
+    padding: 5px;
 }
 
 .header-photo {
@@ -39,6 +42,7 @@
     width: calc(100% / 3);
     height: 300px;
     position: relative;
+    min-width: 200px;
 }
 
 .bailey {
@@ -54,7 +58,7 @@
 }
 
 .bailey:hover, .dolce:hover, .rocco:hover {
-    box-shadow: 0 6px 25px -3px #333;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .name {

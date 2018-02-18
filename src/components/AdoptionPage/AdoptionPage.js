@@ -13,39 +13,48 @@ import BackToHomepage from '../BackToHomepage';
 import PawPrint from '../assets/grey-paw-print.png';
 import '../App.css';
 
-class App extends Component {
+class AdoptionPage extends Component {
   render() {
-    return (
-      <div className={'adoption-page'}>
+    const { windowWidth } = this.props;
+    const smallWindow = windowWidth === 'small';
+    return (<div className={'adoption-page'}>
         <div className={'wrapper'}>
             <div style={{
                 height: 30,
                 width: 'calc(100% - 20px)',
                 padding: '30px 10px',
                 display: 'inline-block',
-                textAlign: 'center'
+                textAlign: 'center',
             }}>
-                <img
-                style={{margin: '0px 5px'}}
-                src={PawPrint}
-                alt={'paw-print'}
-                height={10}
-                width={10}
-                />
-                <img
-                style={{margin: '0px 5px'}}
-                src={PawPrint}
-                alt={'paw-print'}
-                height={20}
-                width={20}
-                />
-                <img
-                style={{margin: '0px 5px'}}
-                src={PawPrint}
-                alt={'paw-print'}
-                height={30}
-                width={30}
-                />
+                {
+                    !smallWindow ?
+                        [
+                            <img
+                            key={'left-1'}
+                            style={{margin: '0px 5px'}}
+                            src={PawPrint}
+                            alt={'paw-print'}
+                            height={15}
+                            width={15}
+                            />,
+                            <img
+                            key={'left-2'}
+                            style={{margin: '0px 5px'}}
+                            src={PawPrint}
+                            alt={'paw-print'}
+                            height={20}
+                            width={20}
+                            />,
+                            <img
+                            key={'left-3'}
+                            style={{margin: '0px 5px'}}
+                            src={PawPrint}
+                            alt={'paw-print'}
+                            height={30}
+                            width={30}
+                            />
+                        ] : null
+                }
                 <div
                 style={{
                     display: 'inline-block',
@@ -56,27 +65,35 @@ class App extends Component {
                 }}>
                     THE ADOPTION PROJECT
                 </div>
-                <img
-                style={{margin: '0px 5px'}}
-                src={PawPrint}
-                alt={'paw-print'}
-                height={30}
-                width={30}
-                />
-                <img
-                style={{margin: '0px 5px'}}
-                src={PawPrint}
-                alt={'paw-print'}
-                height={20}
-                width={20}
-                />
-                <img
-                style={{margin: '0px 5px'}}
-                src={PawPrint}
-                alt={'paw-print'}
-                height={10}
-                width={10}
-                />
+                {
+                    !smallWindow ?
+                        [
+                            <img
+                            key={'right-1'}
+                            style={{margin: '0px 5px'}}
+                            src={PawPrint}
+                            alt={'paw-print'}
+                            height={30}
+                            width={30}
+                            />,
+                            <img
+                            key={'right-2'}
+                            style={{margin: '0px 5px'}}
+                            src={PawPrint}
+                            alt={'paw-print'}
+                            height={20}
+                            width={20}
+                            />,
+                            <img
+                            key={'right-3'}
+                            style={{margin: '0px 5px'}}
+                            src={PawPrint}
+                            alt={'paw-print'}
+                            height={15}
+                            width={15}
+                            />
+                        ] : null
+                }
             </div>
             <Header />
             <Body />
@@ -88,12 +105,11 @@ class App extends Component {
             }
             <BackToHomepage />
         </div>
-      </div>
-    );
+      </div>);
   }
 }
 
-App.propTypes = {
+AdoptionPage.propTypes = {
     formActions: PropTypes.object,
     form: PropTypes.array
 };
@@ -102,6 +118,7 @@ function mapStateToProps(state) {
     return {
         formOpen: state.form.get('formOpen'),
         showConfirmation: state.form.get('showConfirmation'),
+        windowWidth: state.sizing.get('windowWidth'),
     };
 }
 
@@ -114,4 +131,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(App);
+)(AdoptionPage);
