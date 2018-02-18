@@ -10,6 +10,7 @@ import Form from './Form';
 import ConfirmationDialog from './ConfirmationDialog';
 import ApplicationButton from './Button';
 import BackToHomepage from '../BackToHomepage';
+import PawPrint from '../assets/grey-paw-print.png';
 import '../App.css';
 
 class App extends Component {
@@ -17,6 +18,66 @@ class App extends Component {
     return (
       <div className={'adoption-page'}>
         <div className={'wrapper'}>
+            <div style={{
+                height: 30,
+                width: 'calc(100% - 20px)',
+                padding: '30px 10px',
+                display: 'inline-block',
+                textAlign: 'center'
+            }}>
+                <img
+                style={{margin: '0px 5px'}}
+                src={PawPrint}
+                alt={'paw-print'}
+                height={10}
+                width={10}
+                />
+                <img
+                style={{margin: '0px 5px'}}
+                src={PawPrint}
+                alt={'paw-print'}
+                height={20}
+                width={20}
+                />
+                <img
+                style={{margin: '0px 5px'}}
+                src={PawPrint}
+                alt={'paw-print'}
+                height={30}
+                width={30}
+                />
+                <div
+                style={{
+                    display: 'inline-block',
+                    lineHeight: '30px',
+                    letterSpacing: '3px',
+                    fontSize: '30px',
+                    margin: '0px 5px'
+                }}>
+                    THE ADOPTION PROJECT
+                </div>
+                <img
+                style={{margin: '0px 5px'}}
+                src={PawPrint}
+                alt={'paw-print'}
+                height={30}
+                width={30}
+                />
+                <img
+                style={{margin: '0px 5px'}}
+                src={PawPrint}
+                alt={'paw-print'}
+                height={20}
+                width={20}
+                />
+                <img
+                style={{margin: '0px 5px'}}
+                src={PawPrint}
+                alt={'paw-print'}
+                height={10}
+                width={10}
+                />
+            </div>
             <Header />
             <Body />
             <ApplicationButton {...this.props}/>

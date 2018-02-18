@@ -29,7 +29,7 @@
     background-color: white;
     display: flex;
     overflow: hidden;
-    padding: 40px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 .header-photo {
@@ -101,7 +101,7 @@
 
 .button {
     background-color: gray;
-    border-radius: 0px;
+    border-radius: 5px;
     color: white;
     height: 60px;
     line-height: 60px;
@@ -192,4 +192,9 @@
     top: 10px;
     left: 20px;
     cursor: pointer;
+}
+
+#adoption-map {
+    width: 100%;
+    height: 400px;
 }
